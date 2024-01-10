@@ -32,11 +32,11 @@ public class Main {
                 .windowedBy(SessionWindows.ofInactivityGapAndGrace(Duration.ofMinutes(5), Duration.ofMinutes(15)))
                 .count();
         userUpdatesCount.toStream()
-                .foreach((k, v) -> log.info("Window {}: {}", k, v));
+                .foreach((k, v) -> log.info("Per_user {}: {}", k, v));
 
         Utils.runApp(builder,
-                "lesson12",
-                1_000_000,
+                "l12",
+                500,
                 b -> b.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 1000));
     }
 
